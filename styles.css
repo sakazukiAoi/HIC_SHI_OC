@@ -1,0 +1,571 @@
+html{
+    /*IE(Internet Explorer)・Microsoft Edgeへの対応*/
+    -ms-overflow-style: none;
+    /*Firefoxへの対応*/
+    scrollbar-width: none;
+}
+html::-webkit-scrollbar{
+  display: none;
+  scrollbar-width: none;
+}
+
+/* 全体のリセットと基本スタイル (変更なし) */
+body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ヘッダー (変更なし) */
+.page-header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+/* コンテンツ全体を囲むラッパー（Flexboxコンテナ） (変更なし) */
+.content-wrapper {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    max-width: 1400px; /* 例: 1400px から 960px に変更。この値を調整してください */
+    min-width: 1000px; /* 例えば、左カラム(280px) + 右カラムの最低限の幅(400px) = 680px */
+}
+
+
+/* 左カラム（ナビゲーション） (変更なし) */
+.left-column {
+    flex: 0 0 280px;
+    background-color: #f8f8f8;
+    border-right: 1px solid #e0e0e0;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: inset -2px 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-title {
+    font-size: 1.4em;
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* 右カラム（メインコンテンツ） (変更なし) */
+.right-column {
+    flex: 1;
+    padding: 20px;
+    overflow-y: scroll;
+    min-width: 0;
+}
+
+/* キャラクターツリーのスタイル (変更なし) */
+.character-tree-root,
+.category-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.category-list {
+    padding-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.character-tree-root > li {
+    margin-bottom: 5px;
+}
+
+/* カテゴリトグルボタン (変更なし) */
+.category-toggle {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 8px 10px;
+    border: none;
+    background-color: transparent;
+    color: #34495e;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-radius: 5px;
+}
+
+.category-toggle:hover {
+    background-color: #e9ecef;
+    color: #2c3e50;
+}
+
+.category-toggle .toggle-icon {
+    display: inline-block;
+    width: 1em;
+    text-align: center;
+    margin-right: 8px;
+    transition: transform 0.2s ease;
+}
+
+.category-toggle.open .toggle-icon {
+    transform: rotate(90deg);
+}
+
+/* キャラクターリンク (変更なし) */
+.character-link {
+    display: block;
+    padding: 6px 10px 6px 30px;
+    text-decoration: none;
+    color: #555;
+    font-size: 0.95em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-radius: 5px;
+}
+
+.character-link:hover {
+    background-color: #e0e0e0;
+    color: #222;
+}
+
+.character-link.active {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 1px 3px rgba(0, 123, 255, 0.2);
+}
+
+
+/* キャラクターメインコンテンツエリア */
+.character-container {
+    padding: 10px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    /* ★変更: アイテムを左寄せにする */
+    align-items: flex-start; /* または align-items: stretch; で幅いっぱいに */
+    /* コンテンツがない場合のメッセージは中央にしたいので、後でpタグに個別に中央揃えを適用 */
+    justify-content: flex-start; /* ★変更: コンテンツを上寄せにする */
+    /* text-align: center; は削除 */
+    /* text-align: center; */
+}
+
+/* キャラクターコンテナ内のpタグ（"キャラクターが選択されていません"）は中央に */
+.character-container > p {
+    /* ★追加: Flexアイテムを中央揃えに上書き */
+    align-self: center; /* この要素だけ中央に */
+    text-align: center; /* テキストも中央に */
+    margin: auto; /* auto marginで中央配置 */
+    font-size: 1.2em;
+    color: #777;
+}
+
+.character-name-title {
+    /* ★変更: タイトルも左揃えにするか、中央のままにするか選択 */
+    text-align: left; /* 左揃えにする場合 */
+    /* text-align: center; /* 中央揃えを維持する場合 */
+    font-size: 2em;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    width: 100%; /* タイトルが親要素の幅いっぱいに広がるように */
+}
+
+/* メインタブのコンテナ (変更なし) */
+.main-tabs-container {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.main-tab-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 15px;
+    gap: 5px;
+    /* ★追加: タブリスト全体も左寄せにする */
+    justify-content: flex-start;
+}
+
+.main-tab-list li {
+    margin: 0;
+    padding: 0;
+}
+
+.main-tab-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #e9ecef;
+    color: #495057;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px 5px 0 0;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.main-tab-button:hover {
+    background-color: #dee2e6;
+    color: #212529;
+}
+
+.main-tab-button.active {
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+    position: relative;
+    z-index: 1;
+    top: 1px;
+}
+
+/* メインタブコンテンツ (変更なし) */
+.main-tab-content-container {
+    padding: 10px 0;
+    width: 100%;
+}
+
+.main-tab-content {
+    display: none;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+    min-height: 200px;
+    /* ★追加: メインタブコンテンツ内のテキストも左寄せ */
+    text-align: left;
+}
+
+.main-tab-content.active {
+    display: block;
+}
+
+/* サブタブのコンテナ (変更なし) */
+.sub-tabs-container {
+    margin-top: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.sub-tab-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #f8f9fa;
+    border-radius: 5px 5px 0 0;
+    gap: 2px;
+    /* ★追加: サブタブリスト全体も左寄せにする */
+    justify-content: flex-start;
+}
+
+.sub-tab-list li {
+    margin: 0;
+    padding: 0;
+}
+
+.sub-tab-button {
+    padding: 8px 15px;
+    border: none;
+    background-color: transparent;
+    color: #6c757d;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.sub-tab-button:hover {
+    color: #495057;
+    background-color: #e9ecef;
+}
+
+.sub-tab-button.active {
+    color: #007bff;
+    border-bottom-color: #007bff;
+    background-color: #fff;
+}
+
+/* セクションコンテンツ (変更なし) */
+.sub-tab-content-container {
+    padding: 15px;
+}
+
+.section-content {
+    display: none;
+    padding: 10px 0;
+    /* ★追加: セクションコンテンツ内のテキストも左寄せ */
+    text-align: left;
+}
+
+.section-content.active {
+    display: block;
+}
+
+/* コンテンツ内のスタイル (変更なし) */
+.section-content h3 {
+    color: #34495e;
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: left; /* h3も左寄せに */
+}
+
+.section-content p {
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 0.95em;
+    text-align: left; /* pも左寄せに */
+}
+
+.section-content ul {
+    list-style: none;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    text-align: left; /* ulも左寄せに */
+}
+
+.section-content ul li {
+    margin-bottom: 5px;
+}
+
+.section-content strong {
+    color: #2c3e50;
+}
+
+/* 画像ギャラリーのスタイル */
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    /* ★変更: 画像ギャラリーは中央揃えのままにするか、左寄せにするか選択 */
+    justify-content: flex-start; /* 左寄せにする場合 */
+    /* justify-content: center; /* 中央揃えを維持する場合 */
+    padding: 10px 0;
+    width: 100%; /* 親要素の幅に広がるように */
+}
+
+.image-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+    text-align: center; /* 個々の画像アイテム内のテキストは中央揃えを維持 */
+}
+
+.image-item:hover {
+    transform: translateY(-3px);
+}
+
+/* 画像のサイズ上限 */
+.character-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 3px;
+    max-height: 400px;
+    object-fit: contain;
+    /* ★追加: 画像を中央揃えにする場合はmargin: 0 auto; を設定 */
+    margin: 0 auto; /* 画像がimage-item内で中央に表示されるように */
+}
+
+/* 画像サブタブ (変更なし) */
+.image-sub-tabs-container {
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #fbfbfb;
+    padding: 10px;
+    /* ★追加: 画像サブタブのテキストも左寄せ */
+    text-align: left;
+}
+
+.image-sub-tab-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+    justify-content: flex-start;
+    gap: 8px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+}
+
+.image-sub-tab-button {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.85em;
+    color: #555;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.image-sub-tab-button:hover {
+    background-color: #e0e0e0;
+    border-color: #bbb;
+}
+
+.image-sub-tab-button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    box-shadow: 0 1px 3px rgba(0, 123, 255, 0.2);
+}
+
+.image-display-area {
+    padding-top: 10px;
+    /* ★変更: 画像表示エリアのテキストを左寄せ */
+    text-align: left;
+}
+
+.image-display-area p {
+    color: #777;
+    font-style: italic;
+    text-align: left; /* pも左寄せに */
+}
+
+/* 動画のサイズ上限 */
+video {
+    width: 100%;
+    max-width: 100%;
+    max-height: 400px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    /* ★追加: 動画を中央揃えにする場合はmargin: 0 auto; を設定 */
+    margin-left: 0; /* 左寄せにする */
+    margin-right: auto; /* 左寄せにする */
+    /* margin: 0 auto; /* 中央揃えを維持したい場合 */
+}
+
+/* レスポンシブ対応 (変更なし) */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        margin: 10px auto;
+        padding: 0;
+        box-shadow: none;
+        width: auto;
+        margin-left: 10px;
+        margin-right: 10px;
+        min-width: unset;
+    }
+
+    .left-column {
+        flex: none;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        border-radius: 0;
+        padding: 15px;
+        box-shadow: none;
+    }
+    
+    .right-column {
+        padding: 15px;
+        min-width: unset;
+        overflow-y: auto;
+    }
+
+    .character-container {
+        min-height: 250px;
+        /* ★レスポンシブ時も左揃え */
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .character-container > p {
+        align-self: center; /* スマホでも中央揃えを維持 */
+        text-align: center;
+    }
+
+    .page-header h1 {
+        font-size: 1.5em;
+    }
+    .main-tab-list {
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .main-tab-list::-webkit-scrollbar {
+        height: 5px;
+    }
+    .main-tab-list::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0,0.2);
+        border-radius: 5px;
+    }
+    .main-tab-button {
+        flex-shrink: 0;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+    .main-tab-button.active {
+        top: 0;
+    }
+
+    .sub-tab-list {
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+    .sub-tab-list::-webkit-scrollbar {
+        height: 5px;
+    }
+    .sub-tab-list::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0,0.1);
+        border-radius: 5px;
+    }
+    .sub-tab-button {
+        flex-shrink: 0;
+        border-bottom: none;
+    }
+    .sub-tab-button.active {
+        border-bottom: none;
+        background-color: #e9ecef;
+    }
+
+    /* レスポンシブ時の画像/動画のサイズ調整 (変更なし) */
+    .character-image,
+    video {
+        max-width: 100%;
+        max-height: 300px;
+        /* スマホでは画像・動画も左寄せにする */
+        margin-left: 0;
+        margin-right: auto;
+    }
+}

@@ -1,0 +1,71 @@
+[カテゴリ略称]-[キャラクターID]-[種類略称]-[状態/表情略称]-[連番].jpg/png
+[カテゴリ略称] (例: char, item, bg)
+
+何のデータかを示す最上位の分類。
+例:
+char (Character): キャラクター画像
+item (Item): アイテム画像
+bg (Background): 背景画像
+ui (User Interface): UI関連画像（アイコン、ボタンなど）
+eff (Effect): エフェクト画像
+[キャラクターID] (例: miku, sato, boss_01)
+
+どのキャラクターの画像かを示す固有ID。
+キャラクター名や、内部的なIDなどを設定します。
+例: miku, haru, boss_01, enemy_goblin
+[種類略称] (例: full, face, icon)
+
+画像がキャラクターのどの部分や、どんな用途で使われるかを示す分類。
+例:
+full (Full body): 全身画像
+face (Face): 顔画像（アイコン以外の表情差分など）
+icon (Icon): アイコン画像
+bust (Bust-up): バストアップ
+art (Artwork): 設定画や特別なイラスト
+[状態/表情略称] (例: default, happy, sad, attack_01)
+
+キャラクターの状態、表情、または特定の動きを示す。
+例:
+default: デフォルトの表情/状態
+happy: 笑顔
+sad: 悲しい顔
+angry: 怒った顔
+attack_01: 攻撃モーション1
+damaged: ダメージを受けている状態
+[連番] (例: 01, 02, 001)
+
+images/
+├── characters/
+│   ├── miku/
+│   │   ├── fullbody/
+│   │   │   ├── default-01.png
+│   │   │   ├── attack-01.png
+│   │   │   └── ...
+│   │   ├── face/
+│   │   │   ├── happy-01.png
+│   │   │   ├── sad-01.png
+│   │   │   └── ...
+│   │   └── icons/
+│   │       ├── icon-01.png
+│   │       └── ...
+│   ├── haru/
+│   │   ├── fullbody/
+│   │   └── ...
+│   └── boss_01/
+│       └── ...
+├── items/
+│   ├── weapons/
+│   │   ├── sword_iron.png
+│   │   └── axe_silver.png
+│   ├── potions/
+│   │   ├── potion_red.png
+│   │   └── potion_blue.png
+│   └── ...
+└── backgrounds/
+    ├── forest/
+    │   ├── day.jpg
+    │   └── night.jpg
+    ├── city/
+    │   ├── day.jpg
+    │   └── night.jpg
+    └── ...

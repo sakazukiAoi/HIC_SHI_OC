@@ -1,0 +1,112 @@
+{
+  "character_name": "別のキャラクター",
+  "basic_info": {
+    "name": "別野 太郎",
+    "gender": "男性",
+    "age": "25歳",
+    "birthday": "5月15日",
+    "occupation": "エンジニア",
+    "hometown": "都会の都市",
+    "family": "一人暮らし",
+    "personality": "明るく社交的、熱血漢",
+    "motto": "やればできる！",
+    "likes": "ゲーム、ラーメン",
+    "dislikes": "早起き",
+    "strengths": "行動力",
+    "weaknesses": "計画性がない",
+    "hobbies": "フットサル",
+    "special_skills": "プログラミング",
+    "dreams_goals": "自分の会社を立ち上げる",
+    "secrets": "実は猫アレルギー"
+  },
+  "physical_characteristics": {
+    "height": "180cm",
+    "weight": "75kg",
+    "body_type": "がっちり",
+    "hair_color": "茶色",
+    "eye_color": "緑",
+    "skin_color": "健康的",
+    "distinctive_features": "右頬に小さな傷跡"
+  },
+  "body_habits": {
+    "posture": "少し前かがみ",
+    "gait": "早足",
+    "gestures": "よく身振り手振りを使う",
+    "facial_expressions": "表情豊か",
+    "speaking_habits": "語尾が伸びる",
+    "sleep_habits": "朝が苦手",
+    "eating_habits": "早食い",
+    "toilet_habits": "普通"
+  },
+  "sexual_habits_preferences": {
+    "sexual_orientation": "異性愛",
+    "relationship_status": "交際中",
+    "ideal_partner": "一緒に楽しめる人",
+    "sexual_experience": "あり",
+    "sexual_preferences": "特になし",
+    "views_on_love": "お互いを高め合う関係"
+  },
+  "daily_life": {
+    "morning": "ギリギリまで寝て、慌てて出発",
+    "daytime": "仕事に集中",
+    "night": "ゲーム、友人との食事",
+    "holidays": "スポーツ、イベント参加",
+    "stress_relief": "カラオケ",
+    "favorite_place": "スポーツバー"
+  },
+  "other_questions": {
+    "favorite_color": "赤",
+    "favorite_food": "ラーメン",
+    "least_favorite_food": "セロリ",
+    "music_genre": "ロック",
+    "movies_books": "アクション",
+    "dream_job": "起業家",
+    "what_to_cherish": "仲間との絆"
+  },
+  "character_images_by_era": {
+    "basic": {
+      "standing_normal": ["https://via.placeholder.com/200x400/00FFFF/000000?text=Basic+Standing+Another"],
+      "standing_variants": [],
+      "three_view": [],
+      "accessories": []
+    }
+  },
+  "eras": [
+    {
+      "id": "school_era",
+      "title": "学生時代",
+      "overview": "活発で、常に新しいことに挑戦していた学生時代。学業よりも部活動に熱中。",
+      "physical_characteristics": {
+        "height": "170cm",
+        "weight": "68kg",
+        "distinctive_features": "日焼けしていた"
+      },
+      "images": {
+        "standing_normal": ["https://via.placeholder.com/200x400/FF00FF/FFFFFF?text=School+Standing+Another"],
+        "three_view": []
+      },
+      "body_habits": {},
+      "relationships_love": {},
+      "daily_life": {},
+      "environment": {},
+      "other_questions": {}
+    }
+  ],
+  "timeline": {
+    "other_timeline": {
+      "events": [
+        "20XX年：大学卒業後、IT企業に就職。",
+        "20YY年：新規プロジェクトのリーダーに抜擢される。"
+      ],
+      "future_outlook": "将来的には、世界を巻き込むようなサービスを開発したい。"
+    }
+  },
+  "tabs": {
+    "character_lines": [
+      "「よっしゃ、やるぞ！」",
+      "「大丈夫、なんとかなるって！」",
+      "「一緒に最高のもの作ろうぜ！」"
+    ],
+    "character_videos": []
+  }
+}

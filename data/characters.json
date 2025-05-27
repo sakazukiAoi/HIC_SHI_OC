@@ -1,0 +1,38 @@
+{
+  "categories": {
+    "音魅帳": {
+      "脳直": {
+        "完全なキャラクター": {
+          "id": "char_001",
+          "filePath": "data/character_001.json",
+          "categoryPath": "音魅帳 > 脳直 > 完全なキャラクター",
+          "mainName": "完全なキャラクター"
+        },
+        "別のキャラクター": {
+          "id": "char_002",
+          "filePath": "data/character_002.json",
+          "categoryPath": "音魅帳 > 脳直 > 別のキャラクター",
+          "mainName": "別のキャラクター"
+        },
+        "(anagram)": {
+        "阿多田　夕立": {
+          "id": "char_003",
+          "filePath": "data/character_003.json",
+          "categoryPath": "音魅帳 > 脳直 > (anagram) > 阿多田　夕立",
+          "mainName": "阿多田　夕立"
+        }
+      }
+      }      
+    },
+    "まちがい電話": {
+      "AGFOS": {
+        "AG": {
+          "id": "char_test",
+          "filePath": "data/character_test.json",
+          "categoryPath": "まちがい電話 > AGFOS > AG",
+          "mainName": "AG"
+        }
+      }
+    }
+  }
+}
