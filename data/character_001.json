@@ -54,15 +54,7 @@
     "stress_relief": "瞑想",
     "favorite_place": "図書館"
   },
-  "other_questions": {
-    "favorite_color": "青",
-    "favorite_food": "和食",
-    "least_favorite_food": "ピーマン",
-    "music_genre": "クラシック",
-    "movies_books": "SF",
-    "dream_job": "研究者",
-    "what_to_cherish": "友人との絆"
-  },
+
   "character_images_by_era": {
     "basic": {
       "standing_normal": ["https://via.placeholder.com/200x400/FF0000/FFFFFF?text=Basic+Standing+1"],
@@ -72,6 +64,7 @@
     }
   },
   "eras": [
+
     {
       "id": "childhood_era",
       "title": "幼少期",
@@ -139,6 +132,7 @@
       "other_questions": {}
     }
   ],
+
   "timeline": {
     "other_timeline": {
       "events": [
@@ -157,6 +151,9 @@
     "character_videos": [
       { "title": "自己紹介ムービー", "url": "https://www.w3schools.com/html/mov_bbb.mp4" },
       { "title": "研究発表会", "url": "https://www.w3schools.com/html/movie.mp4" }
-    ]
+    ],
+    "other_questions": [
+     {"Q": "利き手", "A": "右" }
+      ]
   }
 }
