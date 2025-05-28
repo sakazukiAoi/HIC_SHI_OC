@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 'basic-body-habits', title: '体癖', dataPath: 'body_habits' },
                 { id: 'basic-sexual-preferences', title: '関係・恋愛', dataPath: 'sexual_habits_preferences' },
                 { id: 'basic-daily-life', title: '日常', dataPath: 'daily_life' },
-                { id: 'basic-other-questions', title: 'その他質問', dataPath: 'other_questions' },
+
                 { id: 'basic-images', title: '画像', dataPath: 'character_images_by_era.basic', type: 'image_section' }
             ]
         },
@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         { id: 'lines', title: 'セリフ', dataPath: 'tabs.character_lines' },
-        { id: 'videos', title: '動画', dataPath: 'tabs.character_videos' }
+        { id: 'videos', title: '動画', dataPath: 'tabs.character_videos' },
+        { id: 'questions', title: 'その他質問', dataPath: 'tabs.other_questions' }
     ];
 
     // 動的に生成される eras 用のセクションテンプレート
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { idSuffix: 'relationships-love', title: '関係・恋愛', dataKey: 'relationships_love' },
         { idSuffix: 'daily-life', title: '日常', dataKey: 'daily_life' },
         { idSuffix: 'environment', title: '環境', dataKey: 'environment' },
-        { idSuffix: 'other-questions', title: 'その他質問', dataKey: 'other_questions' },
+
         { idSuffix: 'images', title: '画像', dataKey: 'images', type: 'image_section' }
     ];
 
@@ -487,6 +488,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     tabContentDiv.innerHTML = '<p>動画はありません。</p>';
                 }
+            }else if (tabDefinition.id === 'questions') {
+                if (data && Array.isArray(data) && data.length > 0) {
+                    tabContentDiv.innerHTML = '<ul>' + data.map(item => `<li><strong>${item.Q}</strong>: ${item.A}</li>`).join('') + '</ul>';
+                } else {
+                    tabContentDiv.innerHTML = '<p>その他の質問はありません。</p>';
+            }
             } else if (data) {
                 tabContentDiv.innerHTML = formatCharacterData(data, tabDefinition.id);
             } else {
