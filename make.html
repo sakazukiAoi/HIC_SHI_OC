@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>キャラクター JSON エディター</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* --- 省略なしのCSS部分（そのまま） --- */
+    .controls {
+      padding: 20px 30px;
+      background: rgba(248, 249, 250, 0.8);
+      border-bottom: 1px solid #e9ecef;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+    .btn.success {
+      background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+    }
+    .btn.danger {
+      background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+    }
+    .btn.home {
+      background: linear-gradient(135deg, #41a3ff 0%, #2b4bff 100%);
+    }
+    #editor-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 600px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      margin-top: 20px;
+    }
+    body {
+      font-family: sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    fieldset {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .remove-btn {
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 5px;
+    }
+    details {
+      margin-bottom: 20px;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 10px 20px;
+      background-color: #f8f9fa;
+    }
+    summary {
+      font-size: 1.2em;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 10px 0;
+      outline: none; /* フォーカス時のアウトラインを消す */
+    }
+    summary::-webkit-details-marker {
+      display: none; /* デフォルトのマーカーを非表示 */
+    }
+    summary::before {
+      content: "　"; /* カスタムマーカー */
+      margin-right: 10px;
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+    details[open] summary::before {
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>キャラクター JSON エディター</h1>
+      <p>キャラクター情報を編集・管理するためのツール</p>
+    </div>
+    <div class="controls">
+      <div class="file-input-wrapper">
+        <input type="file" id="fileInput" accept=".json" style="display:none;">
+        <button class="btn" onclick="document.getElementById('fileInput').click()">JSONファイルを読み込み</button>
+      </div>
+      <button class="btn success" onclick="editor?.downloadJSON()">JSONをダウンロード</button>
+      <button class="btn danger" onclick="location.reload()">データをクリア</button>
+      <button class="btn home"onclick="location.href='https://sakazukiaoi.github.io/HIC_SHI_OC/'">ホーム</button>
+
+    </div>
+    <div id="editor-container"></div>
+  </div>
+
+  <script>
+    class CharacterJSONEditor {
+      constructor() {
+        this.characterData = { eras: [] };
+      }
+
+      async loadFromFile(file) {
+        try {
+          const text = await file.text();
+          this.characterData = JSON.parse(text);
+          this.renderEditor();
+        } catch (e) {
+          alert('JSONファイルの読み込みに失敗しました。');
+        }
+      }
+
+      renderEditor() {
+        const container = document.getElementById('editor-container');
+        container.innerHTML = '';
+
+        // 基本情報 (トグル化)
+        const basicInfoDetails = document.createElement('details');
+        basicInfoDetails.setAttribute('open', ''); // デフォルトで開いておく場合はこの行を削除
+        basicInfoDetails.innerHTML = '<summary>基本情報</summary>';
+        const basicInfoContent = document.createElement('div');
+        const basic = this.characterData.basic_info || {};
+        for (const [key, val] of Object.entries(basic)) {
+          basicInfoContent.innerHTML += `<div class="form-group"><label>${key}</label><input value="${val}" onchange="editor.characterData.basic_info['${key}'] = this.value"></div>`;
+        }
+        basicInfoDetails.appendChild(basicInfoContent);
+        container.appendChild(basicInfoDetails);
+
+        // 身体的特徴 (トグル化)
+        const physicalDetails = document.createElement('details');
+        physicalDetails.setAttribute('open', ''); // デフォルトで開いておく場合はこの行を削除
+        physicalDetails.innerHTML = '<summary>身体的特徴</summary>';
+        const physicalContent = document.createElement('div');
+        const physical = this.characterData.physical_characteristics || {};
+        for (const [key, val] of Object.entries(physical)) {
+          physicalContent.innerHTML += `<div class="form-group"><label>${key}</label><input value="${val}" onchange="editor.characterData.physical_characteristics['${key}'] = this.value"></div>`;
+        }
+        physicalDetails.appendChild(physicalContent);
+        container.appendChild(physicalDetails);
+        
+        // 体癖 (トグル化)
+        const bodyDetails = document.createElement('details');
+        bodyDetails.setAttribute('open', ''); // デフォルトで開いておく場合はこの行を削除
+        bodyDetails.innerHTML = '<summary>体癖</summary>';
+        const bodyContent = document.createElement('div');
+        const body = this.characterData.body_habits || {};
+        for (const [key, val] of Object.entries(body)) {
+          bodyContent.innerHTML += `<div class="form-group"><label>${key}</label><input value="${val}" onchange="editor.characterData.body_habits['${key}'] = this.value"></div>`;
+        }
+        bodyDetails.appendChild(bodyContent);
+        container.appendChild(bodyDetails);
+        
+
+
+        // タイムライン
+        container.innerHTML += '<h2>タイムライン</h2>';
+        const timeline = this.characterData.timeline?.other_timeline?.events || [];
+        timeline.forEach((event, idx) => {
+          const div = document.createElement('div');
+          div.className = 'form-group';
+          div.innerHTML = `
+            <label>イベント${idx + 1}</label>
+            <textarea onchange="editor.characterData.timeline.other_timeline.events[${idx}] = this.value">${event}</textarea>
+            <button class="remove-btn" onclick="editor.removeTimelineEvent(${idx})">削除</button>
+          `;
+          container.appendChild(div);
+        });
+        const addTimelineBtn = document.createElement('button');
+        addTimelineBtn.textContent = 'イベントを追加';
+        addTimelineBtn.className = 'btn';
+        addTimelineBtn.setAttribute('data-action', 'addTimelineEvent'); // カスタム属性でイベントを識別
+        container.appendChild(addTimelineBtn);
+
+        // セリフ
+        container.innerHTML += '<h2>セリフ</h2>';
+        const lines = this.characterData.tabs?.character_lines || [];
+        lines.forEach((line, idx) => {
+          const div = document.createElement('div');
+          div.className = 'form-group';
+          div.innerHTML = `
+            <label>セリフ${idx + 1}</label>
+            <textarea onchange="editor.characterData.tabs.character_lines[${idx}] = this.value">${line}</textarea>
+            <button class="remove-btn" onclick="editor.removeCharacterLine(${idx})">削除</button>
+          `;
+          container.appendChild(div);
+        });
+        const addLineBtn = document.createElement('button');
+        addLineBtn.textContent = 'セリフを追加';
+        addLineBtn.className = 'btn';
+        addLineBtn.setAttribute('data-action', 'addCharacterLine'); // カスタム属性でイベントを識別
+        container.appendChild(addLineBtn);
+
+        // 動画
+        container.innerHTML += '<h2>動画</h2>';
+        const videos = this.characterData.tabs?.character_videos || [];
+        videos.forEach((video, idx) => {
+          const div = document.createElement('div');
+          div.className = 'form-group';
+          div.innerHTML = `
+            <label>動画 ${idx + 1}</label>
+            <div class="form-group">
+              <label>タイトル</label>
+              <input type="text" value="${video.title || ''}" onchange="editor.characterData.tabs.character_videos[${idx}].title = this.value">
+            </div>
+            <div class="form-group">
+              <label>URL</label>
+              <input type="text" value="${video.url || ''}" onchange="editor.characterData.tabs.character_videos[${idx}].url = this.value">
+            </div>
+            <button class="remove-btn" onclick="editor.removeCharactervideos(${idx})">削除</button>
+          `;
+          container.appendChild(div);
+        });
+        const addvideosBtn = document.createElement('button');
+        addvideosBtn.textContent = '動画を追加';
+        addvideosBtn.className = 'btn';
+        addvideosBtn.setAttribute('data-action', 'addCharactervideos'); // カスタム属性でイベントを識別
+        container.appendChild(addvideosBtn);
+
+        // その他質問
+        container.innerHTML += '<h2>その他質問</h2>';
+        const questions = this.characterData.tabs?.other_questions || [];
+        questions.forEach((question, idx) => {
+          const div = document.createElement('div');
+          div.className = 'form-group';
+          div.innerHTML = `
+            <label>質問 ${idx + 1}</label>
+            <div class="form-group">
+              <label>Q</label>
+              <input type="text" value="${question.Q || ''}" onchange="editor.characterData.tabs.other_questions[${idx}].Q = this.value">
+            </div>
+            <div class="form-group">
+              <label>A</label>
+              <input type="text" value="${question.A || ''}" onchange="editor.characterData.tabs.other_questions[${idx}].a = this.value">
+            </div>
+            <button class="remove-btn" onclick="editor.removeOtherquestions(${idx})">削除</button>
+          `;
+          container.appendChild(div);
+        });
+        const addquestionsBtn = document.createElement('button');
+        addquestionsBtn.textContent = '質疑応答を追加';
+        addquestionsBtn.className = 'btn';
+        addquestionsBtn.setAttribute('data-action', 'addOtherquestions'); // カスタム属性でイベントを識別
+        container.appendChild(addquestionsBtn);
+
+        // ERAS
+        container.innerHTML += '<h2>時代・章（eras）</h2>';
+        (this.characterData.eras || []).forEach((era, idx) => {
+          const eraDiv = document.createElement('fieldset');
+          eraDiv.innerHTML = `
+            <legend>${era.title || '時代 ' + (idx + 1)}</legend>
+
+            <div class="form-group"><label>タイトル</label><input value="${era.title || ''}" onchange="editor.characterData.eras[${idx}].title = this.value"></div>
+            <div class="form-group"><label>概要</label><textarea onchange="editor.characterData.eras[${idx}].overview = this.value">${era.overview || ''}</textarea></div>
+            <button class="remove-btn" onclick="editor.removeEra(${idx})">削除</button>
+            `;
+          container.appendChild(eraDiv);
+        });
+        const addButton = document.createElement('button');
+        addButton.textContent = '時代・章を追加';
+        addButton.className = 'btn';
+        addButton.setAttribute('data-action', 'addEra'); // カスタム属性でイベントを識別
+        container.appendChild(addButton);
+
+        // 動的に追加されたボタンにイベントリスナーを設定
+        container.querySelectorAll('button.btn[data-action]').forEach(button => {
+          const action = button.getAttribute('data-action');
+          if (this[action] && typeof this[action] === 'function') {
+            button.onclick = () => this[action]();
+          }
+        });
+      }
+
+      addEra() {
+        this.characterData.eras.push({ title: '', overview: '' });
+        this.renderEditor();
+      }
+
+      removeEra(index) {
+        this.characterData.eras.splice(index, 1);
+        this.renderEditor();
+      }
+
+      addTimelineEvent() {
+        if (!this.characterData.timeline) this.characterData.timeline = {};
+        if (!this.characterData.timeline.other_timeline) this.characterData.timeline.other_timeline = {};
+        if (!this.characterData.timeline.other_timeline.events) this.characterData.timeline.other_timeline.events = [];
+        this.characterData.timeline.other_timeline.events.push('');
+        this.renderEditor();
+      }
+
+      removeTimelineEvent(index) {
+        this.characterData.timeline.other_timeline.events.splice(index, 1);
+        this.renderEditor();
+      }
+
+      addCharacterLine() {
+        if (!this.characterData.tabs) this.characterData.tabs = {};
+        if (!this.characterData.tabs.character_lines) this.characterData.tabs.character_lines = [];
+        this.characterData.tabs.character_lines.push('');
+        this.renderEditor();
+      }
+
+      removeCharacterLine(index) {
+        this.characterData.tabs.character_lines.splice(index, 1);
+        this.renderEditor();
+      }
+
+      addCharactervideos() {
+        if (!this.characterData.tabs) this.characterData.tabs = {};
+        if (!this.characterData.tabs.character_videos) this.characterData.tabs.character_videos = [];
+        this.characterData.tabs.character_videos.push({ "title": "", "url": "" });
+        this.renderEditor();
+      }
+
+      removeCharactervideos(index) {
+        this.characterData.tabs.character_videos.splice(index, 1);
+        this.renderEditor();
+      }
+
+        addOtherquestions() {
+        if (!this.characterData.tabs) this.characterData.tabs = {};
+        if (!this.characterData.tabs.other_questions) this.characterData.tabs.other_questions = [];
+        this.characterData.tabs.other_questions.push({ "Q": "", "A": "" });
+        this.renderEditor();
+      }
+
+      removeOtherquestions(index) {
+        this.characterData.tabs.other_questions.splice(index, 1);
+        this.renderEditor();
+      }
+
+      downloadJSON() {
+        if (!this.characterData) {
+          alert('JSONが読み込まれていません。');
+          return;
+        }
+        const blob = new Blob([JSON.stringify(this.characterData, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'character.json';
+        a.click();
+        URL.revokeObjectURL(a.href);
+      }
+    }
+
+    let editor;
+    document.addEventListener('DOMContentLoaded', () => {
+      editor = new CharacterJSONEditor();
+      document.getElementById('fileInput').addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (file && file.name.endsWith('.json')) {
+          await editor.loadFromFile(file);
+        } else {
+          alert('有効なJSONファイルを選択してください。');
+        }
+      });
+      editor.renderEditor();
+    });
+  </script>
+</body>
+</html>
