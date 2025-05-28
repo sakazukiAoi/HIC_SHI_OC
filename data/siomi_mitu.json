@@ -1,0 +1,181 @@
+{
+  "character_name": "完全なキャラクター",
+  "basic_info": {
+    "name": "汐見美津",
+    "gender": "女",
+    "age": "29",
+    "birthday": "7/20",
+    "occupation": "小説家(ミステリー作家)",
+    "hometown": "東京",
+    "family": "別居、なし",
+    "personality": "冷静沈着、優しい",
+    "motto": "為せば成る",
+    "likes": "読書、コーヒー",
+    "dislikes": "騒がしい場所",
+    "strengths": "分析力",
+    "weaknesses": "運動音痴",
+    "hobbies": "チェス",
+    "special_skills": "記憶力",
+    "dreams_goals": "世界平和",
+    "secrets": "実は甘いものが好き"
+  },
+  "physical_characteristics": {
+    "height": "175cm",
+    "weight": "65kg",
+    "body_type": "細身",
+    "hair_color": "黒",
+    "eye_color": "青",
+    "skin_color": "普通",
+    "distinctive_features": "左目の下に泣きぼくろ"
+  },
+  "body_habits": {
+    "posture": "姿勢が良い",
+    "gait": "ゆっくりと歩く",
+    "gestures": "手を組む癖がある",
+    "facial_expressions": "無表情気味",
+    "speaking_habits": "敬語をよく使う",
+    "sleep_habits": "寝つきが良い",
+    "eating_habits": "好き嫌いがない",
+    "toilet_habits": "普通"
+  },
+  "sexual_habits_preferences": {
+    "sexual_orientation": "異性愛",
+    "relationship_status": "独身",
+    "ideal_partner": "知的な人",
+    "sexual_experience": "なし",
+    "sexual_preferences": "特になし",
+    "views_on_love": "穏やかな関係を築きたい"
+  },
+  "daily_life": {
+    "morning": "6時起床、読書",
+    "daytime": "大学で講義",
+    "night": "自習、散歩",
+    "holidays": "美術館巡り",
+    "stress_relief": "瞑想",
+    "favorite_place": "図書館"
+  },
+  "character_images_by_era": {
+    "basic": {
+      "standing_normal": [
+        "https://via.placeholder.com/200x400/FF0000/FFFFFF?text=Basic+Standing+1"
+      ],
+      "standing_variants": [
+        "https://via.placeholder.com/200x400/FF0000/FFFFFF?text=Basic+Variant+1"
+      ],
+      "three_view": [
+        "https://via.placeholder.com/300x300/0000FF/FFFFFF?text=Basic+3View+1"
+      ],
+      "accessories": []
+    }
+  },
+  "eras": [
+    {
+      "id": "childhood_era",
+      "title": "幼少期",
+      "overview": "穏やかで好奇心旺盛な幼少期を過ごした。絵を描くのが好きだった。",
+      "physical_characteristics": {
+        "height": "110cm",
+        "weight": "20kg",
+        "distinctive_features": "よく転んで膝を擦りむいていた"
+      },
+      "images": {
+        "standing_normal": [
+          "https://via.placeholder.com/200x400/00FF00/FFFFFF?text=Childhood+Standing+1"
+        ],
+        "three_view": []
+      },
+      "body_habits": {},
+      "relationships_love": {
+        "friends": "幼馴染が数人いた"
+      },
+      "daily_life": {
+        "school": "地元の小学校に通っていた"
+      },
+      "environment": {
+        "home": "自然豊かな郊外の一軒家"
+      },
+      "other_questions": {}
+    },
+    {
+      "id": "chapter_1",
+      "title": "第一章：新たな出会い",
+      "overview": "高校入学を機に都会へ。新たな友人や恩師との出会いを経験し、知的な探求心が芽生え始める。",
+      "physical_characteristics": {
+        "height": "165cm",
+        "weight": "55kg",
+        "distinctive_features": "眼鏡をかけるようになった"
+      },
+      "images": {
+        "standing_normal": [
+          "https://via.placeholder.com/200x400/0000FF/FFFFFF?text=Chapter1+Standing+1"
+        ],
+        "three_view": [
+          "https://via.placeholder.com/300x300/FF00FF/FFFFFF?text=Chapter1+3View+1"
+        ]
+      },
+      "body_habits": {},
+      "relationships_love": {},
+      "daily_life": {},
+      "environment": {
+        "school": "進学校に入学"
+      },
+      "other_questions": {}
+    },
+    {
+      "id": "chapter_2",
+      "title": "第二章：試練と成長",
+      "overview": "大学での研究に没頭する中、大きな挫折を経験。しかし、それを乗り越えることで精神的に大きく成長する。",
+      "physical_characteristics": {
+        "height": "175cm",
+        "weight": "65kg"
+      },
+      "images": {
+        "standing_normal": [
+          "https://via.placeholder.com/200x400/FFFF00/000000?text=Chapter2+Standing+1"
+        ],
+        "standing_variants": [
+          "https://via.placeholder.com/200x400/FFFF00/000000?text=Chapter2+Variant+1"
+        ],
+        "three_view": [],
+        "accessories": []
+      },
+      "body_habits": {},
+      "relationships_love": {},
+      "daily_life": {},
+      "environment": {},
+      "other_questions": {}
+    }
+  ],
+  "timeline": {
+    "other_timeline": {
+      "events": [
+        "20XX年：大学を卒業し、研究機関に就職。",
+        "20YY年：論文を発表し、注目を集める。"
+      ],
+      "future_outlook": "将来は、自分の研究で社会に貢献したいと考えている。"
+    }
+  },
+  "tabs": {
+    "character_lines": [
+      "「はじめまして。〇〇と申します。」",
+      "「考えても仕方ないことは、考えないのが一番です。」",
+      "「あなたの意見は尊重します。」"
+    ],
+    "character_videos": [
+      {
+        "title": "自己紹介ムービー",
+        "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+      },
+      {
+        "title": "研究発表会",
+        "url": "https://www.w3schools.com/html/movie.mp4"
+      }
+    ],
+    "other_questions": [
+      {
+        "Q": "利き手",
+        "A": "右"
+      }
+    ]
+  }
+}
