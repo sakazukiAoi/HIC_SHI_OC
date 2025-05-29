@@ -4,36 +4,36 @@
     "name": "汐見美津",
     "gender": "女",
     "age": "29",
-    "birthday": "7/20",
+    "birthday": "1983年7/20",
     "occupation": "小説家(ミステリー作家)",
-    "hometown": "東京",
-    "family": "別居、なし",
-    "personality": "冷静沈着、優しい",
+    "hometown": "神奈川県",
+    "family": "父・母(別居)",
+    "personality": "冷静沈着",
     "motto": "為せば成る",
     "likes": "読書、コーヒー",
     "dislikes": "騒がしい場所",
     "strengths": "分析力",
     "weaknesses": "運動音痴",
     "hobbies": "チェス",
-    "special_skills": "記憶力",
-    "dreams_goals": "世界平和",
-    "secrets": "実は甘いものが好き"
+    "special_skills": "想像力",
+    "dreams_goals": "平穏な生活",
+    "secrets": "金色が好き"
   },
   "physical_characteristics": {
-    "height": "175cm",
-    "weight": "65kg",
+    "height": " 178cm",
+    "weight": "64kg",
     "body_type": "細身",
-    "hair_color": "黒",
-    "eye_color": "青",
-    "skin_color": "普通",
-    "distinctive_features": "左目の下に泣きぼくろ"
+    "hair_color": "銀",
+    "eye_color": "水色",
+    "skin_color": "色白",
+    "distinctive_features": "なし"
   },
   "body_habits": {
     "posture": "姿勢が良い",
     "gait": "ゆっくりと歩く",
     "gestures": "手を組む癖がある",
-    "facial_expressions": "無表情気味",
-    "speaking_habits": "敬語をよく使う",
+    "facial_expressions": "無表情、ジト目気味",
+    "speaking_habits": "標準語",
     "sleep_habits": "寝つきが良い",
     "eating_habits": "好き嫌いがない",
     "toilet_habits": "普通"
@@ -98,8 +98,8 @@
     },
     {
       "id": "chapter_1",
-      "title": "第一章：新たな出会い",
-      "overview": "高校入学を機に都会へ。新たな友人や恩師との出会いを経験し、知的な探求心が芽生え始める。",
+      "title": "１章",
+      "overview": "中学時代：いとこの零奈に出会う。",
       "physical_characteristics": {
         "height": "165cm",
         "weight": "55kg",
@@ -123,8 +123,8 @@
     },
     {
       "id": "chapter_2",
-      "title": "第二章：試練と成長",
-      "overview": "大学での研究に没頭する中、大きな挫折を経験。しかし、それを乗り越えることで精神的に大きく成長する。",
+      "title": "2章",
+      "overview": "高校時代：完全に心を閉じる。",
       "physical_characteristics": {
         "height": "175cm",
         "weight": "65kg"
@@ -144,6 +144,14 @@
       "daily_life": {},
       "environment": {},
       "other_questions": {}
+    },
+    {
+      "title": "3章",
+      "overview": "大人になり、一人暮らしをするようになる。\n零奈がハルを紹介する。"
+    },
+    {
+      "title": "4章",
+      "overview": "ハルの死から立ち直り、"
     }
   ],
   "timeline": {
