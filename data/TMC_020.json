@@ -22,7 +22,7 @@
   "physical_characteristics": {
     "height": " 178cm",
     "weight": "64kg",
-    "body_type": "細身",
+    "body_type": "細身 少し肩幅が広い",
     "hair_color": "銀",
     "eye_color": "水色",
     "skin_color": "色白",
@@ -34,8 +34,8 @@
     "gestures": "手を組む癖がある",
     "facial_expressions": "無表情、ジト目気味",
     "speaking_habits": "標準語",
-    "sleep_habits": "寝つきが良い",
-    "eating_habits": "好き嫌いがない",
+    "sleep_habits": "ちゃんとベッドで眠れることが少ない",
+    "eating_habits": "特になし",
     "toilet_habits": "普通"
   },
   "sexual_habits_preferences": {
@@ -165,24 +165,16 @@
   },
   "tabs": {
     "character_lines": [
-      "「はじめまして。〇〇と申します。」",
-      "「考えても仕方ないことは、考えないのが一番です。」",
-      "「あなたの意見は尊重します。」"
+      "「えっと……そうだね。」",
+      "「どうして？」",
+      "「……はあ。」"
     ],
-    "character_videos": [
-      {
-        "title": "自己紹介ムービー",
-        "url": "https://www.w3schools.com/html/mov_bbb.mp4"
-      },
-      {
-        "title": "研究発表会",
-        "url": "https://www.w3schools.com/html/movie.mp4"
-      }
-    ],
+    "character_videos": [],
     "other_questions": [
       {
         "Q": "利き手",
-        "A": "右"
+        "A": "右",
+        "a": "左"
       }
     ]
   }
