@@ -202,7 +202,29 @@
         bodyDetails.appendChild(bodyContent);
         container.appendChild(bodyDetails);
         
+        // 性癖 (トグル化)
+        const sexualDetails = document.createElement('details');
+        sexualDetails.setAttribute('open', ''); // デフォルトで開いておく場合はこの行を削除
+        sexualDetails.innerHTML = '<summary>体癖</summary>';
+        const sexualContent = document.createElement('div');
+        const sexual = this.characterData.sexual_habits_preferences || {};
+        for (const [key, val] of Object.entries(sexual)) {
+          sexualContent.innerHTML += `<div class="form-group"><label>${key}</label><input value="${val}" onchange="editor.characterData.sexual_habits_preferences['${key}'] = this.value"></div>`;
+        }
+        sexualDetails.appendChild(sexualContent);
+        container.appendChild(sexualDetails);
 
+        // 日常 (トグル化)
+        const dailyDetails = document.createElement('details');
+        dailyDetails.setAttribute('open', ''); // デフォルトで開いておく場合はこの行を削除
+        dailyDetails.innerHTML = '<summary>日常</summary>';
+        const dailyContent = document.createElement('div');
+        const daily = this.characterData.daily_life || {};
+        for (const [key, val] of Object.entries(daily)) {
+          dailyContent.innerHTML += `<div class="form-group"><label>${key}</label><input value="${val}" onchange="editor.characterData.daily_life['${key}'] = this.value"></div>`;
+        }
+        dailyDetails.appendChild(dailyContent);
+        container.appendChild(dailyDetails);
 
         // タイムライン
         container.innerHTML += '<h2>タイムライン</h2>';
