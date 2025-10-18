@@ -24,7 +24,7 @@
 
         "汐見　美津": {
           "id": "TMC_020",
-          "filePath": "data/TMC_20.json",
+          "filePath": "data/TMC_020.json",
           "categoryPath": "音魅帳 > 脳直 > (anagram) > 汐見　美津",
           "mainName": "汐見　美津"
         }
@@ -43,5 +43,6 @@
     }
   }
 }
+
 
 
