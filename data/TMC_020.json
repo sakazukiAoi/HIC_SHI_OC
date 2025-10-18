@@ -1,5 +1,5 @@
 {
-  "character_name": "完全なキャラクター",
+  "character_name": "汐見美津",
   "basic_info": {
     "name": "汐見美津",
     "gender": "女",
@@ -56,15 +56,7 @@
   },
   "character_images_by_era": {
     "basic": {
-      "standing_normal": [
-        "https://via.placeholder.com/200x400/FF0000/FFFFFF?text=Basic+Standing+1"
-      ],
-      "standing_variants": [
-        "https://via.placeholder.com/200x400/FF0000/FFFFFF?text=Basic+Variant+1"
-      ],
-      "three_view": [
-        "https://via.placeholder.com/300x300/0000FF/FFFFFF?text=Basic+3View+1"
-      ],
+
       "accessories": []
     }
   },
