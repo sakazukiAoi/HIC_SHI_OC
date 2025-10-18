@@ -16,22 +16,22 @@
         },
         "(anagram)": {
         "阿多田　夕立": {
-          "id": "TMC_003",
+          "id": "char_003",
           "filePath": "data/character_003.json",
           "categoryPath": "音魅帳 > 脳直 > (anagram) > 阿多田　夕立",
           "mainName": "阿多田　夕立"
         },
 
         "汐見　美津": {
-          "id": "TMC_020",
-          "filePath": "data/TMC_020.json",
+          "id": "char_020",
+          "filePath": "data/siomi_mitu.json",
           "categoryPath": "音魅帳 > 脳直 > (anagram) > 汐見　美津",
           "mainName": "汐見　美津"
         }
        }
       }
     },
-    "まちがい電話": {
+    "▢▬▢▮▩▩": {
       "AGFOS": {
         "AG": {
           "id": "char_test",
