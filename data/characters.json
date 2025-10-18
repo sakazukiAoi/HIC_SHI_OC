@@ -2,29 +2,29 @@
   "categories": {
     "音魅帳": {
       "脳直": {
-        "完全なキャラクター": {
+        "テスト１": {
           "id": "char_001",
           "filePath": "data/character_001.json",
-          "categoryPath": "音魅帳 > 脳直 > 完全なキャラクター",
-          "mainName": "完全なキャラクター"
+          "categoryPath": "音魅帳 > 脳直 > テスト１",
+          "mainName": "テスト１"
         },
-        "別のキャラクター": {
+        "テスト２": {
           "id": "char_002",
           "filePath": "data/character_002.json",
-          "categoryPath": "音魅帳 > 脳直 > 別のキャラクター",
-          "mainName": "別のキャラクター"
+          "categoryPath": "音魅帳 > 脳直 > テスト２",
+          "mainName": "テスト２"
         },
         "(anagram)": {
         "阿多田　夕立": {
-          "id": "char_003",
-          "filePath": "data/character_003.json",
+          "id": "TMC_001",
+          "filePath": "data/TMC_001.json",
           "categoryPath": "音魅帳 > 脳直 > (anagram) > 阿多田　夕立",
           "mainName": "阿多田　夕立"
         },
 
         "汐見　美津": {
-          "id": "char_020",
-          "filePath": "data/siomi_mitu.json",
+          "id": "TMC_020",
+          "filePath": "data/TMC_20.json",
           "categoryPath": "音魅帳 > 脳直 > (anagram) > 汐見　美津",
           "mainName": "汐見　美津"
         }
@@ -34,8 +34,8 @@
     "▢▬▢▮▩▩": {
       "AGFOS": {
         "AG": {
-          "id": "char_test",
-          "filePath": "data/TMC_20.json",
+          "id": "AGFos_001",
+          "filePath": "data/character_003",
           "categoryPath": "まちがい電話 > AGFos > AG",
           "mainName": "AG"
         }
@@ -43,4 +43,5 @@
     }
   }
 }
+
 
