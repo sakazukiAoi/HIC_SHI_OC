@@ -36,10 +36,11 @@
         "AG": {
           "id": "char_test",
           "filePath": "data/TMC_20.json",
-          "categoryPath": "まちがい電話 > AGFOS > AG",
+          "categoryPath": "まちがい電話 > AGFos > AG",
           "mainName": "AG"
         }
       }
     }
   }
 }
+
