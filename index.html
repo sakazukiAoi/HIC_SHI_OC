@@ -7,23 +7,33 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- ▼ オーバーレイ（開始メッセージ） -->
+    <div id="start-overlay" class="start-overlay">
+        <div class="start-message">
+            <p>始めますか？</p>
+            <button id="start-button">OK</button>
+        </div>
+    </div>
+    <!-- ▲ オーバーレイ -->
+
+    <!-- ▼ 下のレイヤー（基盤） -->
     <header class="page-header">
         <h1>HIC_SHI character's</h1>
-        </header>
+    </header>
 
     <div class="content-wrapper">
         <aside class="left-column">
             <h2 class="sidebar-title">HIC_SHI</h2>
-            <div id="character-tree" class="character-tree">
-                </div>
+            <div id="character-tree" class="character-tree"></div>
         </aside>
 
         <main id="character-main-content" class="right-column">
             <div id="character-container" class="character-container">
                 <p>左側のリストからキャラクターを選択してください。</p>
-                </div>
+            </div>
         </main>
     </div>
+    <!-- ▲ 下のレイヤー -->
 
     <script src="script.js"></script>
 </body>
