@@ -1,3 +1,20 @@
+//始めますか？の画面
+document.addEventListener("DOMContentLoaded", () => {
+    const startOverlay = document.getElementById("start-overlay");
+    const startButton = document.getElementById("start-button");
+
+    startButton.addEventListener("click", () => {
+        // フェードアウト
+        startOverlay.classList.add("fade-out");
+
+        // 完全に消したい場合（アニメ後に削除）
+        setTimeout(() => {
+            startOverlay.remove();
+        }, 1000);
+    });
+});
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const characterContainer = document.getElementById('character-container');
     const characterTreeContainer = document.getElementById('character-tree'); // IDを変更
@@ -621,3 +638,78 @@ document.addEventListener('DOMContentLoaded', () => {
     // 初期化関数を呼び出す
     initialize();
 });
+
+//ホバー時に音を鳴らす
+document.addEventListener("DOMContentLoaded", () => {
+    const startOverlay = document.getElementById("start-overlay");
+    const startButton = document.getElementById("start-button");
+
+    startButton.addEventListener("click", () => {
+        // フェードアウト
+        startOverlay.classList.add("fade-out");
+
+        // アニメ後に削除
+        setTimeout(() => {
+            startOverlay.remove();
+            enableHoverSounds(); // フェードアウト完了後に音システム起動
+        }, 1000);
+    });
+});
+
+function enableHoverSounds() {
+    // 対象クラス（ホバーで暗くなる要素たち）
+    const hoverClasses = [
+        ".category-toggle",
+        ".character-link",
+
+    ];
+//非表示の要素
+//         ".main-tab-button",
+//        ".sub-tab-button",
+//        ".image-sub-tab-button"
+    // 効果音ファイル（任意のwav/mp3に変更可）
+    const hoverSound = new Audio("audio/hover.mp3"); 
+    hoverSound.volume = 1; // 音量調整（0〜1）
+
+    // 同時再生防止フラグ
+    let isPlaying = false;
+
+    // 各対象にイベントを付与
+    hoverClasses.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.addEventListener("mouseenter", () => {
+                if (!isPlaying) {
+                    isPlaying = true;
+                    hoverSound.currentTime = 0; // 毎回先頭から再生
+                    hoverSound.play().catch(() => {}); // ブラウザブロック回避
+                    // 少し間を置いて再び再生できるようにする
+                    setTimeout(() => (isPlaying = false), 10);
+                }
+            });
+        });
+    });
+}
+// ===== 左クリックで音を鳴らす =====
+
+// 音声ファイル（パスは適宜変更）
+const CLICK_SOUND_PATH = 'audio/click.mp3';
+
+// 再生用オブジェクト
+const clickAudio = new Audio(CLICK_SOUND_PATH);
+clickAudio.volume = 0.5;
+
+// 左クリック押下時に音を鳴らす
+document.addEventListener('mousedown', (event) => {
+    // 左クリックのみ（0 が左ボタン）
+    if (event.button !== 0) return;
+
+    try {
+        // 再生位置をリセットして重ね再生可能に
+        clickAudio.currentTime = 0;
+        clickAudio.play().catch(() => {});
+    } catch (err) {
+        console.error('クリック音の再生に失敗:', err);
+    }
+});
+
+
