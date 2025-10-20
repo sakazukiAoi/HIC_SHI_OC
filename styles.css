@@ -8,6 +8,51 @@ html::-webkit-scrollbar{
   display: none;
   scrollbar-width: none;
 }
+/* 全体初期設定 */
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/* オーバーレイ */
+.start-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.start-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.start-message {
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.start-message button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background: #ffcc00;
+    color: #333;
+    transition: background 0.3s;
+}
+
+.start-message button:hover {
+    background: #ffe066;
+}
 
 /* 全体のリセットと基本スタイル (変更なし) */
 body {
