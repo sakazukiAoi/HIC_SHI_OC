@@ -23,6 +23,7 @@
     "height": " 178cm",
     "weight": "64kg",
     "body_type": "細身 少し肩幅が広い",
+    "dexterity": "左",
     "hair_color": "銀",
     "eye_color": "水色",
     "skin_color": "色白",
@@ -35,8 +36,8 @@
     "facial_expressions": "無表情、ジト目気味",
     "speaking_habits": "標準語",
     "sleep_habits": "ちゃんとベッドで眠れることが少ない",
-    "eating_habits": "特になし",
-    "toilet_habits": "普通"
+    "eating_habits": "特になし"
+
   },
   "sexual_habits_preferences": {
     "sexual_orientation": "異性愛",
@@ -164,9 +165,8 @@
     "character_videos": [],
     "other_questions": [
       {
-        "Q": "利き手",
-        "A": "右",
-        "a": "左"
+        "Q": "好きな音楽は？",
+        "A": "クラシック"
       }
     ]
   }
